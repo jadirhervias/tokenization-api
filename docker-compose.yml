@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  redis:
+    image: "redis:7-alpine"
+    ports:
+      - 6379:6379
+    volumes:
+      - ./tmp/redis_data:/var/lib/redis/data
+  postgres:
+    image: postgres:14-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./tmp/postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - DATABASE_NAME=postgres

@@ -1,0 +1,35 @@
+frameworkVersion: '3'
+
+org: jadir
+service: tokenization-api
+
+provider:
+  name: aws
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  runtime: nodejs18.x
+  timeout: 29 # API Gateway has a maximum timeout of 30 seconds
+  httpApi:
+    cors: true
+  environment:
+    NODE_ENV: development
+    DATABASE_HOST: localhost
+    DATABASE_NAME: postgres
+
+functions:
+  charges:
+    handler: dist/apps/lambdas/findCard/handler.handler
+    events:
+      - httpApi:
+          path: /charges
+          method: post
+  tokens:
+    handler: dist/apps/lambdas/tokenizeCard/handler.handler
+    events:
+      - httpApi:
+          path: /tokens
+          method: post
+
+plugins:
+  - serverless-dotenv-plugin # https://www.serverless.com/framework/docs/environment-variables
+  - serverless-offline # Get your serverless configuration and run the server local
