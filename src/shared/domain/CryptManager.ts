@@ -72,13 +72,11 @@ export class CryptManager {
         encryptedMessage.substr(encryptedMessage.length - 32)
       );
       this.setSalt(salt);
-      console.debug(`encryptAES salt: ${salt}`);
 
       const iv = CryptoJS.enc.Hex.parse(
         encryptedMessage.substr(encryptedMessage.length - 64, 32)
       );
       this.setIv(iv);
-      console.debug(`encryptAES iv: ${salt}`);
 
       const encrypted = encryptedMessage.substr(0, encryptedMessage.length - 64);
       const derivedKey = this.deriveEncryptionKey(keySize, iterations);
