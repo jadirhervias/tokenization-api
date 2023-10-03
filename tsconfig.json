@@ -16,7 +16,7 @@
   },
   "include": [
     "src/**/*",
-    "apps/**/*",
+    "apps/backend/**/*",
     "config/**/*",
   ]
 }

@@ -18,13 +18,13 @@ provider:
 
 functions:
   charges:
-    handler: dist/apps/lambdas/findCard/handler.handler
+    handler: dist/apps/backend/lambdas/findCard/handler.handler
     events:
       - httpApi:
           path: /charges
           method: post
   tokens:
-    handler: dist/apps/lambdas/tokenizeCard/handler.handler
+    handler: dist/apps/backend/lambdas/tokenizeCard/handler.handler
     events:
       - httpApi:
           path: /tokens
