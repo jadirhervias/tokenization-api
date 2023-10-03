@@ -7,7 +7,10 @@
 - [ts-node-dev](https://github.com/wclr/ts-node-dev)
 - [Serverless Framework](https://www.serverless.com/)
 - [Docker Compose](https://docs.docker.com/compose/gettingstarted/) (v3)
+- [Vue.js](https://vuejs.org/) (v3)
 - [Jest](https://jestjs.io)
+
+# Backend
 
 ## Project setup
 
@@ -38,4 +41,15 @@ npm run build && npm run start
 ## Test with Jest and supertest
 ```
 npm run test
+```
+
+# Frontend
+
+## Run
+```
+# run SPA locally
+npm run dev:web
+
+# build SPA
+npm run build:web
 ```

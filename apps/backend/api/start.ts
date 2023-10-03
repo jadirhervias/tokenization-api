@@ -26,6 +26,6 @@ process.on('SIGTERM', async () => {
 });
 
 function handleError(error: any) {
-  console.log(error);
+  console.error(error);
   process.exit(1);
 }

@@ -1,5 +1,5 @@
 export class FindCardTokenizerResponse {
-  constructor(private token: string, private cardId: string) {
+  constructor(readonly token: string, readonly cardId: string) {
   }
 
   toPrimitives(): Record<string, unknown> {

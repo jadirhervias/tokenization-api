@@ -12,7 +12,9 @@ export class Server {
   async listen(): Promise<void> {
     return new Promise(resolve => {
       this.httpServer = http.createServer(async (req: http.IncomingMessage, res: http.ServerResponse): Promise<void> => {
-        res.setHeader('Content-type', 'application/json');
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Access-Control-Allow-Origin', '*');
+
         await initRouter(req, res);
       });
 

@@ -1,6 +1,6 @@
 import middy from "middy";
-import { CardCreator } from "../../../src/card/application/register/CardCreator";
-import { CardTokenizerCreator } from "../../../src/cardTokenizer/application/create/CardTokenizerCreator";
+import { CardCreator } from "../../../../src/card/application/register/CardCreator";
+import { CardTokenizerCreator } from "../../../../src/cardTokenizer/application/create/CardTokenizerCreator";
 import { TokenizationApp } from "../../TokenizationApp";
 import { lambdaErrorHandler } from "../lambdaErrorHandler";
 import { zCreateCardTokenizerSchema } from "../../schemas";
@@ -21,7 +21,7 @@ const handler = middy(async (payload: Object, context: Object, callback: Functio
   // Card token generation
   const cardTokenizer = new CardTokenizerCreator();
   const cardTokenizerResponse = await cardTokenizer.run({
-    card_id: cardRegistrarResponse.toPrimitives().card_id as string
+    card_id: cardRegistrarResponse.cardId
   });
 
   return {

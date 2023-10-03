@@ -1,6 +1,6 @@
 import { HandlerLambda, NextFunction } from 'middy';
 import { PkAuthenticationFailed } from "../PkAuthenticationFailed";
-import { RequestSchemaValidationFailed } from "../RequestSchemaValidationFailed";
+import { RequestSchemaValidationFailed } from '../RequestSchemaValidationFailed';
 
 export const lambdaErrorHandler = () => async (handler: HandlerLambda, next: NextFunction) => {
   const request = JSON.parse(JSON.stringify(handler.event));

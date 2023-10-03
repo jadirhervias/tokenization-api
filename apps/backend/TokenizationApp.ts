@@ -1,6 +1,6 @@
-import { RedisClientFactory } from '../src/shared/infrastructure/persistance/redis/RedisClientFactory';
-import { TypeOrmDataSourceFactory } from '../src/shared/infrastructure/persistance/typeorm/TypeOrmDataSourceFactory';
-import { Server } from './api/Server';
+import { RedisClientFactory } from '../../src/shared/infrastructure/persistance/redis/RedisClientFactory';
+import { TypeOrmDataSourceFactory } from '../../src/shared/infrastructure/persistance/typeorm/TypeOrmDataSourceFactory';
+import { Server } from '../backend/api/Server';
 
 export class TokenizationApp {
   server?: Server;

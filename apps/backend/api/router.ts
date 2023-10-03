@@ -1,11 +1,10 @@
 import { z } from 'zod';
 import { IncomingMessage, ServerResponse } from "http";
 import httpStatus from "http-status";
-import { CardCreator } from "../../src/card/application/register/CardCreator";
-import { CardTokenizerCreator } from "../../src/cardTokenizer/application/create/CardTokenizerCreator";
-import { CardTokenizerFinder } from "../../src/cardTokenizer/application/finder/CardTokenizerFinder";
-import { CardFinder } from "../../src/card/application/finder/CardFinder";
-import { RouteNotFoundError } from "../RouteNotFoundError";
+import { CardCreator } from "../../../src/card/application/register/CardCreator";
+import { CardTokenizerCreator } from "../../../src/cardTokenizer/application/create/CardTokenizerCreator";
+import { CardTokenizerFinder } from "../../../src/cardTokenizer/application/finder/CardTokenizerFinder";
+import { CardFinder } from "../../../src/card/application/finder/CardFinder";
 import { getJsonBody } from "./utils";
 import { RequestSchemaValidationFailed } from '../RequestSchemaValidationFailed';
 import { validateRequestSchema } from '../middlewares/validateRequestSchema';
@@ -85,7 +84,14 @@ export async function initRouter(req: IncomingMessage, res: ServerResponse) {
     return;
   }
 
-  throw new RouteNotFoundError();
+  console.error(`[RouteNotFoundError - ${req.url.split('?')[0]}]`);
+
+  res.statusCode = httpStatus.NOT_FOUND;
+  res.end(JSON.stringify({
+    success: false,
+    message: 'Route not found error.',
+    error: null,
+  }));
 }
 
 async function controllerHandler(req: IncomingMessage, res: ServerResponse, route: RouteType) {

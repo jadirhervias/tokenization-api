@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development ts-node-dev ./apps/api/start.ts",
+    "dev:web": "cd ./apps/frontend && npm run dev",
+    "build:web": "cd ./apps/frontend && npm run build",
+    "dev": "cross-env NODE_ENV=development ts-node-dev ./apps/backend/api/start.ts",
     "start": "serverless offline start",
     "build": "tsc",
     "test": "jest --coverage"
