@@ -1,9 +1,8 @@
 import request from "supertest";
 import httpStatus from "http-status";
-import { TokenizationApp } from '../../../apps/backend/TokenizationApp';
+import { app } from '../utils/hooks';
 
 describe('POST /tokens', () => {
-  let app: TokenizationApp;
   process.env.DATABASE_HOST = 'localhost';
   process.env.DATABASE_NAME = 'postgres';
   process.env.REDIS_URL = 'redis://localhost:6379'
@@ -11,15 +10,6 @@ describe('POST /tokens', () => {
   process.env.ENCRYPTION_KEY = 'test123';
   const TEST_TOKEN = 'tcH836CIiuQPq1UN';
   const TEST_PK = 'pk_test_LsRBKejzCOEEWOsw';
-
-  beforeEach(async () => {
-    app = new TokenizationApp();
-    await app.start();
-  });
-
-  afterEach(async () => {
-    await app.stop();
-  });
 
   it('should return 201 CREATED', async () => {
     const response = await request(app.httpServer)
