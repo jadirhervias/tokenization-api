@@ -1,6 +1,6 @@
 import request from "supertest";
 import httpStatus from "http-status";
-import { TokenizationApp } from '../../../apps/TokenizationApp';
+import { TokenizationApp } from '../../../apps/backend/TokenizationApp';
 
 describe('POST /tokens', () => {
   let app: TokenizationApp;
@@ -12,12 +12,12 @@ describe('POST /tokens', () => {
   const TEST_TOKEN = 'tcH836CIiuQPq1UN';
   const TEST_PK = 'pk_test_LsRBKejzCOEEWOsw';
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     app = new TokenizationApp();
     await app.start();
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await app.stop();
   });
 

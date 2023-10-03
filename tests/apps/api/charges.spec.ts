@@ -1,6 +1,6 @@
 import request from "supertest";
 import httpStatus from "http-status";
-import { TokenizationApp } from '../../../apps/TokenizationApp';
+import { TokenizationApp } from '../../../apps/backend/TokenizationApp';
 import { CardTokenizerCreator } from "../../../src/cardTokenizer/application/create/CardTokenizerCreator";
 import { CardCreator } from "../../../src/card/application/register/CardCreator";
 
@@ -23,12 +23,12 @@ describe('POST /charges', () => {
     cvv: 111,
   };
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     app = new TokenizationApp();
     await app.start();
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await app.stop();
   });
 
